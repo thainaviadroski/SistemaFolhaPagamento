@@ -1,4 +1,8 @@
-public class Cargo {
+package modelo;
+
+import javax.xml.transform.Source;
+
+public class Cargo implements Source {
     private Integer idCargo;
     private int cargaHorariaMensal;
     private String descricao;
@@ -43,5 +47,15 @@ public class Cargo {
                 ", cargaHorariaMensal=" + cargaHorariaMensal +
                 ", descricao='" + descricao + '\'' +
                 '}';
+    }
+
+    @Override
+    public void setSystemId(String s) {
+
+    }
+
+    @Override
+    public String getSystemId() {
+        return null;
     }
 }

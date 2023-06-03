@@ -11,8 +11,8 @@ public class FolhaPagFunc {
     private int faltasSemJustificativas;
     private double salarioBase;
     private double valorHorasExtras;
-    private double totalProvTranentos;
-    private double valorValesporte;
+    private double totalProventos;
+    private double valorValeTransporte;
     private double valorValeAlimentacao;
     private double descontoINSS;
     private double descontoIR;
@@ -111,20 +111,20 @@ public class FolhaPagFunc {
         this.valorHorasExtras = valorHorasExtras;
     }
 
-    public double getTotalProvTranentos() {
-        return totalProvTranentos;
+    public double getTotalProventos() {
+        return totalProventos;
     }
 
-    public void setTotalProvTranentos(double totalProvTranentos) {
-        this.totalProvTranentos = totalProvTranentos;
+    public void setTotalProventos(double totalProventos) {
+        this.totalProventos = totalProventos;
     }
 
-    public double getValorValesporte() {
-        return valorValesporte;
+    public double getValorValeTransporte() {
+        return valorValeTransporte;
     }
 
-    public void setValorValesporte(double valorValesporte) {
-        this.valorValesporte = valorValesporte;
+    public void setValorValeTransporte(double valorValeTransporte) {
+        this.valorValeTransporte = valorValeTransporte;
     }
 
     public double getValorValeAlimentacao() {

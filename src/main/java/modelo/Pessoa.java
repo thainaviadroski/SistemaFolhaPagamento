@@ -1,11 +1,12 @@
 package modelo;
 
+import javax.xml.transform.Source;
 import java.io.Serializable;
 import java.util.Objects;
 
 
 
-public class Pessoa extends Entidade{
+public class Pessoa extends Entidade implements Source {
 
     private Integer id;
     private String nome;
@@ -112,5 +113,13 @@ public class Pessoa extends Entidade{
     }
 
 
+    @Override
+    public void setSystemId(String s) {
 
+    }
+
+    @Override
+    public String getSystemId() {
+        return null;
+    }
 }
