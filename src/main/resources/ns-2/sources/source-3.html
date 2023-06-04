@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Endereco</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelo</a>
+</div>
+
+<h1>Coverage Summary for Class: Endereco (modelo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Endereco</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5,9%
+  </span>
+  <span class="absValue">
+    (1/17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4,2%
+  </span>
+  <span class="absValue">
+    (1/24)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelo;
+&nbsp;
+&nbsp;import jakarta.validation.constraints.*;
+&nbsp;
+&nbsp;public class Endereco {
+&nbsp;    @NotBlank( message = &quot;O Id do endereco nao pode estar em branco&quot;)
+&nbsp;    @NotNull( message = &quot;O Id do endereco nao pode estar nulo&quot;)
+&nbsp;    @NotEmpty( message = &quot;O Id do endereco nao pode estar vazio&quot;)
+&nbsp;    private Integer id;
+&nbsp;
+&nbsp;    @Size(max = 50, message = &quot;O nome da cidade deve ter no máximo {max} caracteres&quot;)
+&nbsp;    private String cidade;
+&nbsp;
+&nbsp;    @Size(max = 50, message = &quot;O nome do bairro deve ter no máximo {max} caracteres&quot;)
+&nbsp;    private String bairro;
+&nbsp;
+&nbsp;    @Size(max = 100, message = &quot;O nome da rua deve ter no máximo {max} caracteres&quot;)
+&nbsp;    private String rua;
+&nbsp;
+&nbsp;    @Size(max = 10, message = &quot;O número deve ter no máximo {max} caracteres&quot;)
+&nbsp;    private String numero;
+&nbsp;
+&nbsp;    @Pattern(regexp = &quot;\\d{5}-\\d{3}&quot;, message = &quot;O CEP deve estar no formato 00000-000&quot;)
+&nbsp;    private String cep;
+&nbsp;
+&nbsp;    @Pattern(regexp = &quot;\\d{3}-\\d{3}-\\d{4}&quot;, message = &quot;O telefone deve estar no formato 000-000-0000&quot;)
+&nbsp;    private String telefone;
+&nbsp;
+<b class="fc">&nbsp;    public Endereco() {</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Endereco(Integer id, String cidade, String bairro, String rua, String numero, String cep, String telefone) {</b>
+<b class="nc">&nbsp;        this.id = id;</b>
+<b class="nc">&nbsp;        this.cidade = cidade;</b>
+<b class="nc">&nbsp;        this.bairro = bairro;</b>
+<b class="nc">&nbsp;        this.rua = rua;</b>
+<b class="nc">&nbsp;        this.numero = numero;</b>
+<b class="nc">&nbsp;        this.cep = cep;</b>
+<b class="nc">&nbsp;        this.telefone = telefone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getId() {
+<b class="nc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setId(Integer id) {
+<b class="nc">&nbsp;        this.id = id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getCidade() {
+<b class="nc">&nbsp;        return cidade;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCidade(String cidade) {
+<b class="nc">&nbsp;        this.cidade = cidade;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getBairro() {
+<b class="nc">&nbsp;        return bairro;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setBairro(String bairro) {
+<b class="nc">&nbsp;        this.bairro = bairro;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getRua() {
+<b class="nc">&nbsp;        return rua;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setRua(String rua) {
+<b class="nc">&nbsp;        this.rua = rua;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getNumero() {
+<b class="nc">&nbsp;        return numero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setNumero(String numero) {
+<b class="nc">&nbsp;        this.numero = numero;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getCep() {
+<b class="nc">&nbsp;        return cep;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCep(String cep) {
+<b class="nc">&nbsp;        this.cep = cep;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getTelefone() {
+<b class="nc">&nbsp;        return telefone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTelefone(String telefone) {
+<b class="nc">&nbsp;        this.telefone = telefone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Endereco{&quot; + &quot;id=&quot; + id + &quot;, cidade=&quot; + cidade + &quot;, bairro=&quot; + bairro + &quot;, rua=&quot; + rua + &quot;, numero=&quot; + numero + &quot;, cep=&quot; + cep + &quot;, telefone=&quot; + telefone + &#39;}&#39;;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-03 17:37</div>
+</div>
+</body>
+</html>

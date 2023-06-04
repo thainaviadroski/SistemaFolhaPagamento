@@ -1,11 +1,22 @@
 package modelo;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Funcionario extends Pessoa implements Serializable {
-
+    @NotBlank(message = "O cargo não pode estar em branco.")
     private String cargo;
+
+    private String ctps;
+    private LocalDate dataAdmissao;
+    private LocalDate dataDemissao;
+    private double salario;
+    private boolean recebeValeTransporte;
+    private int numeroDependentes;
 
     public Funcionario() {
     }
@@ -23,17 +34,52 @@ public class Funcionario extends Pessoa implements Serializable {
         this.cargo = cargo;
     }
 
-    @Override
-    public String toString() {
-        return "Funcionario{" +
-                "id=" + getId() +
-                ", nome='" + getNome() + '\'' +
-                ", cpf='" + getCpf() + '\'' +
-                ", email='" + getEmail() + '\'' +
-                ", telefone='" + getTelefone() + '\'' +
-                ", endereco=" + getEndereco() +
-                ", cargo='" + cargo + '\'' +
-                '}';
+    public String getCtps() {
+        return ctps;
+    }
+
+    public void setCtps(String ctps) {
+        this.ctps = ctps;
+    }
+
+    public LocalDate getDataAdmissao() {
+        return dataAdmissao;
+    }
+
+    public void setDataAdmissao(LocalDate dataAdmissao) {
+        this.dataAdmissao = dataAdmissao;
+    }
+
+    public LocalDate getDataDemissao() {
+        return dataDemissao;
+    }
+
+    public void setDataDemissao(LocalDate dataDemissao) {
+        this.dataDemissao = dataDemissao;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public boolean isRecebeValeTransporte() {
+        return recebeValeTransporte;
+    }
+
+    public void setRecebeValeTransporte(boolean recebeValeTransporte) {
+        this.recebeValeTransporte = recebeValeTransporte;
+    }
+
+    public int getNumeroDependentes() {
+        return numeroDependentes;
+    }
+
+    public void setNumeroDependentes(int numeroDependentes) {
+        this.numeroDependentes = numeroDependentes;
     }
 
     @Override

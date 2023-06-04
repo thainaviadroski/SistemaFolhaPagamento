@@ -1,12 +1,31 @@
 package modelo;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class ConfiguracaoFolhaPag {
+    @NotBlank(message = "O Id da configuracao da folha de pagamentos nao pode estar em branco")
+    @NotNull(message = "O Id da configuracao da folha de pagamentos nao pode estar nulo")
     private Integer idConfiguracaoFolhaPag;
+    @Min(value = 1900, message = "O ano de vigência deve ser igual ou maior que 1900")
     private int anoVigencia;
+
     private boolean ativo;
+
+    @Min(value = 0, message = "O valor do vale alimentação por dia não pode ser negativo")
     private double valorDiaValeAlimentacao;
+
+    @Min(value = 0, message = "O valor do vale transporte por dia não pode ser negativo")
     private double valorDiaValeTransporte;
+
+    @Min(value = 0, message = "O percentual de desconto do vale transporte não pode ser negativo")
+    @Max(value = 100, message = "O percentual de desconto do vale transporte não pode ser maior que 100")
     private double percentualDescontoValeTransporte;
+
+    @Min(value = 0, message = "O percentual de desconto do vale alimentação não pode ser negativo")
+    @Max(value = 100, message = "O percentual de desconto do vale alimentação não pode ser maior que 100")
     private double percentualDescontoValeAlimentacao;
 
     public ConfiguracaoFolhaPag() {

@@ -1,10 +1,21 @@
 package modelo;
 
+import jakarta.validation.constraints.*;
+
 import javax.xml.transform.Source;
 
 public class Cargo implements Source {
+
+    //@NotNull( message = "O Id do cargo nao pode estar nulo")
     private Integer idCargo;
+    //@Min(value = 1, message = "A carga horária mensal não pode ser negativa")
+
+    @Min(value = 1, message = "Value invalid")
+    @Max(value = 200, message = "Value invalid")
+
     private int cargaHorariaMensal;
+    @NotEmpty(message = "A descrição do cargo não pode estar vazia")
+    @Size(min = 2)
     private String descricao;
 
     public Cargo() {

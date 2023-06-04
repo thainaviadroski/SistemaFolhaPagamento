@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Funcionario</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelo</a>
+</div>
+
+<h1>Coverage Summary for Class: Funcionario (modelo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Funcionario</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelo;
+&nbsp;
+&nbsp;import jakarta.validation.constraints.NotBlank;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class Funcionario extends Pessoa implements Serializable {
+&nbsp;    @NotBlank(message = &quot;O cargo não pode estar em branco.&quot;)
+&nbsp;    private String cargo;
+&nbsp;
+<b class="nc">&nbsp;    public Funcionario() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Funcionario(Integer id, String nome, String cpf, String email, String telefone, Endereco endereco, String cargo) {
+<b class="nc">&nbsp;        super(id, nome, cpf, email, telefone, endereco);</b>
+<b class="nc">&nbsp;        this.cargo = cargo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getCargo() {
+<b class="nc">&nbsp;        return cargo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCargo(String cargo) {
+<b class="nc">&nbsp;        this.cargo = cargo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Funcionario{&quot; +</b>
+<b class="nc">&nbsp;                &quot;id=&quot; + getId() +</b>
+<b class="nc">&nbsp;                &quot;, nome=&#39;&quot; + getNome() + &#39;\&#39;&#39; +</b>
+<b class="nc">&nbsp;                &quot;, cpf=&#39;&quot; + getCpf() + &#39;\&#39;&#39; +</b>
+<b class="nc">&nbsp;                &quot;, email=&#39;&quot; + getEmail() + &#39;\&#39;&#39; +</b>
+<b class="nc">&nbsp;                &quot;, telefone=&#39;&quot; + getTelefone() + &#39;\&#39;&#39; +</b>
+<b class="nc">&nbsp;                &quot;, endereco=&quot; + getEndereco() +</b>
+&nbsp;                &quot;, cargo=&#39;&quot; + cargo + &#39;\&#39;&#39; +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="nc">&nbsp;        return Objects.hash(getId(), getNome(), getCpf());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object obj) {
+<b class="nc">&nbsp;        if (this == obj) {</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (obj == null || getClass() != obj.getClass()) {</b>
+<b class="nc">&nbsp;            return false;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        Funcionario other = (Funcionario) obj;</b>
+<b class="nc">&nbsp;        return Objects.equals(getId(), other.getId()) &amp;&amp;</b>
+<b class="nc">&nbsp;                Objects.equals(getNome(), other.getNome()) &amp;&amp;</b>
+<b class="nc">&nbsp;                Objects.equals(getCpf(), other.getCpf());</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-03 17:37</div>
+</div>
+</body>
+</html>

@@ -1,25 +1,65 @@
 package modelo;
 
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.Range;
+
 import java.time.LocalDate;
 
 public class FolhaPagFunc {
+    @NotNull(message = "O id da folha de pagamentos não pode ser nulo.")
+    @NotBlank(message = "O id da folha de pagamento nao pode estar vazia.")
+    @NotEmpty(message = "O Id da folha de pagamento nao pode estar vazio")
     private Integer idFolhaPagFunc;
+    @Range(min = 1900, max = 2023, message = "O ano deve conter 4 numeros")
+    @Min(value = 1900, message = "O ano de referência deve ser igual ou superior a 1900.")
     private int anoReferencia;
+    @Range(min = 01, max = 12, message = "O mes deve conter 2 numeros e ser entre 01 e 12")
     private int mesReferencia;
+
+    @PastOrPresent
+    @NotNull(message = "A data de pagamento não pode ser nula.")
     private LocalDate dataPagamento;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @PastOrPresent
+    @Min(value = 0, message = "As horas trabalhadas não podem ser negativas.")
     private int horasTrabalhadas;
+    @Range(min = 0, max = 31, message = "nao podem existir faltas negativas nem sao permitidas mais de 31 faltas")
     private int faltasSemJustificativas;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O salário base não pode ser negativo.")
     private double salarioBase;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O valor das horas extras não pode ser negativo.")
     private double valorHorasExtras;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O total de proventos não pode ser negativo.")
     private double totalProventos;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O valor do vale transporte não pode ser negativo.")
     private double valorValeTransporte;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O valor do vale alimentação não pode ser negativo.")
     private double valorValeAlimentacao;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O desconto do INSS não pode ser negativo.")
     private double descontoINSS;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O desconto do IR não pode ser negativo.")
     private double descontoIR;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O desconto do vale transporte não pode ser negativo.")
     private double descontoValeTransporte;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O desconto do vale alimentação não pode ser negativo.")
     private double descontoValeAlimentacao;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O valor do FGTS não pode ser negativo.")
     private double valorFGTS;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O total de descontos não pode ser negativo.")
     private double totalDescontos;
+    @Pattern(regexp = "\\d+", message = "Digite apenas números.")
+    @Min(value = 0, message = "O salário líquido não pode ser negativo.")
     private double salarioLiquido;
 
     public FolhaPagFunc() {
@@ -189,5 +229,9 @@ public class FolhaPagFunc {
 
     public void setSalarioLiquido(double salarioLiquido) {
         this.salarioLiquido = salarioLiquido;
+    }
+    
+    public void setDataPagamento(LocalDate dataPagamento) {
+        this.dataPagamento = dataPagamento;
     }
 }

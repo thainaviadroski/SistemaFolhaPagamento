@@ -1,0 +1,336 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > FolhaPagFunc</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelo</a>
+</div>
+
+<h1>Coverage Summary for Class: FolhaPagFunc (modelo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FolhaPagFunc</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/37)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/55)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelo;
+&nbsp;
+&nbsp;import jakarta.validation.constraints.*;
+&nbsp;import org.hibernate.validator.constraints.Range;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;
+&nbsp;public class FolhaPagFunc {
+&nbsp;    @NotNull(message = &quot;O id da folha de pagamentos não pode ser nulo.&quot;)
+&nbsp;    @NotBlank(message = &quot;O id da folha de pagamento nao pode estar vazia.&quot;)
+&nbsp;    @NotEmpty( message = &quot;O Id da folha de pagamento nao pode estar vazio&quot;)
+&nbsp;    private Integer idFolhaPagFunc;
+&nbsp;    @Range(min = 1900, max = 2023, message = &quot;O ano deve conter 4 numeros&quot;)
+&nbsp;    @Min(value = 1900, message = &quot;O ano de referência deve ser igual ou superior a 1900.&quot;)
+&nbsp;    private int anoReferencia;
+&nbsp;    @Range(min = 01, max = 12, message = &quot;O mes deve conter 2 numeros e ser entre 01 e 12&quot;)
+&nbsp;    private int mesReferencia;
+&nbsp;
+&nbsp;    @PastOrPresent
+&nbsp;    @NotNull(message = &quot;A data de pagamento não pode ser nula.&quot;)
+&nbsp;    private LocalDate dataPagamento;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @PastOrPresent
+&nbsp;    @Min(value = 0, message = &quot;As horas trabalhadas não podem ser negativas.&quot;)
+&nbsp;    private int horasTrabalhadas;
+&nbsp;    @Range(min = 0, max = 31, message = &quot;nao podem existir faltas negativas nem sao permitidas mais de 31 faltas&quot;)
+&nbsp;    private int faltasSemJustificativas;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O salário base não pode ser negativo.&quot;)
+&nbsp;    private double salarioBase;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O valor das horas extras não pode ser negativo.&quot;)
+&nbsp;    private double valorHorasExtras;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O total de proventos não pode ser negativo.&quot;)
+&nbsp;    private double totalProventos;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O valor do vale transporte não pode ser negativo.&quot;)
+&nbsp;    private double valorValeTransporte;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O valor do vale alimentação não pode ser negativo.&quot;)
+&nbsp;    private double valorValeAlimentacao;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O desconto do INSS não pode ser negativo.&quot;)
+&nbsp;    private double descontoINSS;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O desconto do IR não pode ser negativo.&quot;)
+&nbsp;    private double descontoIR;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O desconto do vale transporte não pode ser negativo.&quot;)
+&nbsp;    private double descontoValeTransporte;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O desconto do vale alimentação não pode ser negativo.&quot;)
+&nbsp;    private double descontoValeAlimentacao;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O valor do FGTS não pode ser negativo.&quot;)
+&nbsp;    private double valorFGTS;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O total de descontos não pode ser negativo.&quot;)
+&nbsp;    private double totalDescontos;
+&nbsp;    @Pattern(regexp = &quot;\\d+&quot;, message = &quot;Digite apenas números.&quot;)
+&nbsp;    @Min(value = 0, message = &quot;O salário líquido não pode ser negativo.&quot;)
+&nbsp;    private double salarioLiquido;
+&nbsp;
+<b class="nc">&nbsp;    public FolhaPagFunc() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public FolhaPagFunc(Integer idFolhaPagFunc, int anoReferencia, int mesReferencia, LocalDate dataPagamento, int horasTrabalhadas,
+&nbsp;                        int faltasSemJustificativas, double salarioBase, double valorHorasExtras, double totalProventos,
+&nbsp;                        double valorValeTransporte, double valorValeAlimentacao, double descontoINSS, double descontoIR,
+&nbsp;                        double descontoValeTransporte, double descontoValeAlimentacao, double valorFGTS,
+<b class="nc">&nbsp;                        double totalDescontos, double salarioLiquido) {</b>
+<b class="nc">&nbsp;        this.idFolhaPagFunc = idFolhaPagFunc;</b>
+<b class="nc">&nbsp;        this.anoReferencia = anoReferencia;</b>
+<b class="nc">&nbsp;        this.mesReferencia = mesReferencia;</b>
+<b class="nc">&nbsp;        this.dataPagamento = dataPagamento;</b>
+<b class="nc">&nbsp;        this.horasTrabalhadas = horasTrabalhadas;</b>
+<b class="nc">&nbsp;        this.faltasSemJustificativas = faltasSemJustificativas;</b>
+<b class="nc">&nbsp;        this.salarioBase = salarioBase;</b>
+<b class="nc">&nbsp;        this.valorHorasExtras = valorHorasExtras;</b>
+<b class="nc">&nbsp;        this.totalProventos = totalProventos;</b>
+<b class="nc">&nbsp;        this.valorValeTransporte = valorValeTransporte;</b>
+<b class="nc">&nbsp;        this.valorValeAlimentacao = valorValeAlimentacao;</b>
+<b class="nc">&nbsp;        this.descontoINSS = descontoINSS;</b>
+<b class="nc">&nbsp;        this.descontoIR = descontoIR;</b>
+<b class="nc">&nbsp;        this.descontoValeTransporte = descontoValeTransporte;</b>
+<b class="nc">&nbsp;        this.descontoValeAlimentacao = descontoValeAlimentacao;</b>
+<b class="nc">&nbsp;        this.valorFGTS = valorFGTS;</b>
+<b class="nc">&nbsp;        this.totalDescontos = totalDescontos;</b>
+<b class="nc">&nbsp;        this.salarioLiquido = salarioLiquido;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getIdFolhaPagFunc() {
+<b class="nc">&nbsp;        return idFolhaPagFunc;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setIdFolhaPagFunc(Integer idFolhaPagFunc) {
+<b class="nc">&nbsp;        this.idFolhaPagFunc = idFolhaPagFunc;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getAnoReferencia() {
+<b class="nc">&nbsp;        return anoReferencia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAnoReferencia(int anoReferencia) {
+<b class="nc">&nbsp;        this.anoReferencia = anoReferencia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getMesReferencia() {
+<b class="nc">&nbsp;        return mesReferencia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMesReferencia(int mesReferencia) {
+<b class="nc">&nbsp;        this.mesReferencia = mesReferencia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalDate getDataPagamento() {
+<b class="nc">&nbsp;        return dataPagamento;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public int getHorasTrabalhadas() {
+<b class="nc">&nbsp;        return horasTrabalhadas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setHorasTrabalhadas(int horasTrabalhadas) {
+<b class="nc">&nbsp;        this.horasTrabalhadas = horasTrabalhadas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getFaltasSemJustificativas() {
+<b class="nc">&nbsp;        return faltasSemJustificativas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setFaltasSemJustificativas(int faltasSemJustificativas) {
+<b class="nc">&nbsp;        this.faltasSemJustificativas = faltasSemJustificativas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getSalarioBase() {
+<b class="nc">&nbsp;        return salarioBase;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setSalarioBase(double salarioBase) {
+<b class="nc">&nbsp;        this.salarioBase = salarioBase;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getValorHorasExtras() {
+<b class="nc">&nbsp;        return valorHorasExtras;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setValorHorasExtras(double valorHorasExtras) {
+<b class="nc">&nbsp;        this.valorHorasExtras = valorHorasExtras;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getTotalProventos() {
+<b class="nc">&nbsp;        return totalProventos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTotalProventos(double totalProventos) {
+<b class="nc">&nbsp;        this.totalProventos = totalProventos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getValorValeTransporte() {
+<b class="nc">&nbsp;        return valorValeTransporte;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setValorValeTransporte(double valorValeTransporte) {
+<b class="nc">&nbsp;        this.valorValeTransporte = valorValeTransporte;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getValorValeAlimentacao() {
+<b class="nc">&nbsp;        return valorValeAlimentacao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setValorValeAlimentacao(double valorValeAlimentacao) {
+<b class="nc">&nbsp;        this.valorValeAlimentacao = valorValeAlimentacao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getDescontoINSS() {
+<b class="nc">&nbsp;        return descontoINSS;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDescontoINSS(double descontoINSS) {
+<b class="nc">&nbsp;        this.descontoINSS = descontoINSS;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getDescontoIR() {
+<b class="nc">&nbsp;        return descontoIR;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDescontoIR(double descontoIR) {
+<b class="nc">&nbsp;        this.descontoIR = descontoIR;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getDescontoValeTransporte() {
+<b class="nc">&nbsp;        return descontoValeTransporte;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDescontoValeTransporte(double descontoValeTransporte) {
+<b class="nc">&nbsp;        this.descontoValeTransporte = descontoValeTransporte;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getDescontoValeAlimentacao() {
+<b class="nc">&nbsp;        return descontoValeAlimentacao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDescontoValeAlimentacao(double descontoValeAlimentacao) {
+<b class="nc">&nbsp;        this.descontoValeAlimentacao = descontoValeAlimentacao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getValorFGTS() {
+<b class="nc">&nbsp;        return valorFGTS;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setValorFGTS(double valorFGTS) {
+<b class="nc">&nbsp;        this.valorFGTS = valorFGTS;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getTotalDescontos() {
+<b class="nc">&nbsp;        return totalDescontos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTotalDescontos(double totalDescontos) {
+<b class="nc">&nbsp;        this.totalDescontos = totalDescontos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getSalarioLiquido() {
+<b class="nc">&nbsp;        return salarioLiquido;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setSalarioLiquido(double salarioLiquido) {
+<b class="nc">&nbsp;        this.salarioLiquido = salarioLiquido;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-03 17:37</div>
+</div>
+</body>
+</html>

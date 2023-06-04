@@ -1,17 +1,37 @@
 package modelo;
 
-import javax.xml.transform.Source;
-import java.io.Serializable;
-import java.util.Objects;
+import annotations.CPF;
+import jakarta.validation.constraints.*;
 
+import javax.xml.transform.Source;
+import java.util.Objects;
 
 
 public class Pessoa extends Entidade implements Source {
 
     private Integer id;
+
+    @NotBlank(message = "Invalid Field")
+    @NotNull(message = "Invalid Field")
+    @Pattern(regexp = "^[a-zA-ZÀ-ÖØ-öø-ÿ]{2,90}$\n")
+    @Size(min = 2, max = 90, message = "Invalid Field")
     private String nome;
+
+    @NotBlank(message = "Invalid Field")
+    @Size(min = 11, max = 14, message = "Invalid field")
+    @Pattern(regexp = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}-?[0-9]{2}", message = "Invalid field")
+    @CPF
     private String cpf;
+
+    @NotBlank(message = "Invalid Field")
+    @NotNull(message = "Invalid Field")
+    @Email(message = "Invalid Field")
     private String email;
+
+    @NotBlank(message = "Invalid Field")
+    @NotNull(message = "Invalid Field")
+    @Size(min = 8, max = 13, message = "Invalid field")
+    @Pattern(regexp = "\\(?[0-9]{2,3}\\)?\\s[0-9]{4,5}\\-?[0-9]{4}", message = "Invalid field")
     private String telefone;
     private Endereco endereco;
 
@@ -121,5 +141,13 @@ public class Pessoa extends Entidade implements Source {
     @Override
     public String getSystemId() {
         return null;
+    }
+
+    public Boolean login(String mail, String senha) {
+
+        if (mail != "" && senha != "") {
+            return true;
+        }
+        return false;
     }
 }

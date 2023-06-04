@@ -1,16 +1,20 @@
 package modelo;
 
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class Endereco {
-
+    @NotBlank( message = "O Id do endereco nao pode estar em branco")
+    @NotNull( message = "O Id do endereco nao pode estar nulo")
+    @NotEmpty( message = "O Id do endereco nao pode estar vazio")
     private Integer id;
 
+    @Size(max = 50, message = "O nome da cidade deve ter no máximo {max} caracteres")
     private String cidade;
 
+    @Size(max = 50, message = "O nome do bairro deve ter no máximo {max} caracteres")
     private String bairro;
 
+    @Size(max = 100, message = "O nome da rua deve ter no máximo {max} caracteres")
     private String rua;
 
     @Size(max = 10, message = "O número deve ter no máximo {max} caracteres")
@@ -19,7 +23,7 @@ public class Endereco {
     @Pattern(regexp = "\\d{5}-\\d{3}", message = "O CEP deve estar no formato 00000-000")
     private String cep;
 
-    @Pattern(regexp = "[\\d]{3}-[\\d]{3}-[\\d]{4}", message = "O telefone deve estar no formato 000-000-0000")
+    @Pattern(regexp = "\\d{3}-\\d{3}-\\d{4}", message = "O telefone deve estar no formato 000-000-0000")
     private String telefone;
 
     public Endereco() {

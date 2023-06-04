@@ -1,0 +1,174 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Cargo</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelo</a>
+</div>
+
+<h1>Coverage Summary for Class: Cargo (modelo)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Cargo</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelo;
+&nbsp;
+&nbsp;import jakarta.validation.constraints.Min;
+&nbsp;import jakarta.validation.constraints.NotBlank;
+&nbsp;import jakarta.validation.constraints.NotEmpty;
+&nbsp;import jakarta.validation.constraints.NotNull;
+&nbsp;
+&nbsp;import javax.xml.transform.Source;
+&nbsp;
+&nbsp;public class Cargo implements Source {
+&nbsp;    @NotBlank( message = &quot;O Id do cargo nao pode estar em branco&quot;)
+&nbsp;    @NotEmpty( message = &quot;O Id do cargo nao pode estar vazio&quot;)
+&nbsp;    @NotNull( message = &quot;O Id do cargo nao pode estar nulo&quot;)
+&nbsp;    private Integer idCargo;
+&nbsp;    @Min(value = 0, message = &quot;A carga horária mensal não pode ser negativa&quot;)
+&nbsp;    private int cargaHorariaMensal;
+&nbsp;    @NotEmpty(message = &quot;A descrição do cargo não pode estar vazia&quot;)
+&nbsp;    private String descricao;
+&nbsp;
+<b class="nc">&nbsp;    public Cargo() {</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Cargo(Integer idCargo, int cargaHorariaMensal, String descricao) {</b>
+<b class="nc">&nbsp;        this.idCargo = idCargo;</b>
+<b class="nc">&nbsp;        this.cargaHorariaMensal = cargaHorariaMensal;</b>
+<b class="nc">&nbsp;        this.descricao = descricao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getIdCargo() {
+<b class="nc">&nbsp;        return idCargo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setIdCargo(Integer idCargo) {
+<b class="nc">&nbsp;        this.idCargo = idCargo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getCargaHorariaMensal() {
+<b class="nc">&nbsp;        return cargaHorariaMensal;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCargaHorariaMensal(int cargaHorariaMensal) {
+<b class="nc">&nbsp;        this.cargaHorariaMensal = cargaHorariaMensal;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDescricao() {
+<b class="nc">&nbsp;        return descricao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDescricao(String descricao) {
+<b class="nc">&nbsp;        this.descricao = descricao;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Cargo{&quot; +</b>
+&nbsp;                &quot;idCargo=&quot; + idCargo +
+&nbsp;                &quot;, cargaHorariaMensal=&quot; + cargaHorariaMensal +
+&nbsp;                &quot;, descricao=&#39;&quot; + descricao + &#39;\&#39;&#39; +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void setSystemId(String s) {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String getSystemId() {
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-03 17:37</div>
+</div>
+</body>
+</html>
