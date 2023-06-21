@@ -65,11 +65,7 @@ public class FolhaPagFunc {
     public FolhaPagFunc() {
     }
 
-    public FolhaPagFunc(Integer idFolhaPagFunc, int anoReferencia, int mesReferencia, LocalDate dataPagamento, int horasTrabalhadas,
-                        int faltasSemJustificativas, double salarioBase, double valorHorasExtras, double totalProventos,
-                        double valorValeTransporte, double valorValeAlimentacao, double descontoINSS, double descontoIR,
-                        double descontoValeTransporte, double descontoValeAlimentacao, double valorFGTS,
-                        double totalDescontos, double salarioLiquido) {
+    public FolhaPagFunc(Integer idFolhaPagFunc, int anoReferencia, int mesReferencia, LocalDate dataPagamento, int horasTrabalhadas, int faltasSemJustificativas, double salarioBase, double valorHorasExtras, double totalProventos, double valorValeTransporte, double valorValeAlimentacao, double descontoINSS, double descontoIR, double descontoValeTransporte, double descontoValeAlimentacao, double valorFGTS, double totalDescontos, double salarioLiquido) {
         this.idFolhaPagFunc = idFolhaPagFunc;
         this.anoReferencia = anoReferencia;
         this.mesReferencia = mesReferencia;
@@ -230,8 +226,13 @@ public class FolhaPagFunc {
     public void setSalarioLiquido(double salarioLiquido) {
         this.salarioLiquido = salarioLiquido;
     }
-    
+
     public void setDataPagamento(LocalDate dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
+
+    public double calcularFolhadePagamento(FolhaPagFunc folha) {
+        return folha.getSalarioBase() - (folha.getSalarioBase() - (folha.getDescontoINSS() / 100));
+    }
+
 }
