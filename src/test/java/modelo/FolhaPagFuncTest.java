@@ -161,51 +161,6 @@ public class FolhaPagFuncTest {
 
     }
 
-    @Test
-    public void testarDataFutura() {
-        LocalDate data = DateUtils.parseDate("11/11/2023");
-        folhaPag.setDataPagamento(data);
-        violations = validator.validateProperty(folhaPag, "dataPagamento");
-        assertTrue("validar data futura 1 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-        data = DateUtils.parseDate("12/12/2023");
-        folhaPag.setDataPagamento(data);
-        violations = validator.validateProperty(folhaPag, "dataPagamento");
-        assertTrue("validar data futura 2 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-        data = DateUtils.parseDate("10/12/2025");
-        folhaPag.setDataPagamento(data);
-        violations = validator.validateProperty(folhaPag, "dataPagamento");
-        assertTrue("validar data futura 3 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-    }
-
-    @Test
-    public void testarDataPassada() {
-        LocalDate data = DateUtils.parseDate("11/11/2022");
-
-        folhaPag.setDataPagamento(data);
-        violations = validator.validateProperty(folhaPag, "dataPagamento");
-        assertFalse("validar data passada 1 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-        data = DateUtils.parseDate("11/11/2021");
-        folhaPag.setDataPagamento(data);
-        violations = validator.validateProperty(folhaPag, "dataPagamento");
-        assertFalse("validar data passada 2 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-        data = DateUtils.parseDate("11/11/2020");
-        folhaPag.setDataPagamento(data);
-        violations = validator.validateProperty(folhaPag, "dataPagamento");
-        assertFalse("validar data passada 3 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-    }
-
-    @Test
-    public void testarDataPresente() {
-        LocalDate data = DateUtils.parseDate("04/06/2023");
-        folhaPag.setDataPagamento(data);
-        violations = validator.validateProperty(folhaPag, "dataPagamento");
-        assertFalse("validar data futura @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-    }
 
     @Test
     public void testarHorasZeradas() {

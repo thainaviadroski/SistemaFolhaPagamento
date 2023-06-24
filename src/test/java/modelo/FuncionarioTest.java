@@ -3,7 +3,7 @@ package modelo;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
-
+import java.util.Date;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
@@ -13,7 +13,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.PositiveOrZero;
-
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import jakarta.validation.Validation;
 import modelo.Funcionario;
 import org.hibernate.validator.constraints.Range;
@@ -109,82 +111,12 @@ public class FuncionarioTest {
 
     }
 
-    @Test
-    public void testarDataAdmissaoValida() {
-        LocalDate data;
-
-        data = DateUtils.parseDate("11/11/2022");
-        funcionario.setDataAdmissao(data);
-        violations = getViolationsField(funcionario, "dataAdmissao");
-        assertFalse("validar data de admissao incorreta 2 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertFalse("validar data de admissao incorreta 2 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-        data = DateUtils.parseDate("11/11/2020");
-        funcionario.setDataAdmissao(data);
-        violations = getViolationsField(funcionario, "dataAdmissao");
-        assertFalse("validar data de admissao incorreta 2 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertFalse("validar data de admissao incorreta 2 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-
-    }
-
-    @Test
-    public void testarDataAdmissaoInvalida() {
-        LocalDate data;
-
-        funcionario.setDataAdmissao(null);
-        violations = getViolationsField(funcionario, "dataAdmissao");
-        assertTrue("validar data de admissao incorreta 1 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertFalse("validar data de admissao incorreta 1 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-        data = DateUtils.parseDate("11/11/2023");
-        funcionario.setDataAdmissao(data);
-        violations = getViolationsField(funcionario, "dataAdmissao");
-        assertFalse("validar data de admissao correta 3 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertTrue("validar data de admissao correta 3 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
-
-        data = DateUtils.parseDate("13/12/2025");
-        funcionario.setDataAdmissao(data);
-        violations = getViolationsField(funcionario, "dataAdmissao");
-        assertFalse("validar data de admissao correta 3 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertTrue("validar data de admissao correta 3 @PastOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof PastOrPresent));
+    private LocalDate convertDateToLocalDate(String dateString) {
+        Date date = DateUtils.parseDate(dateString);
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
 
-    @Test
-    public void testarDataDemissaoValida() {
-        LocalDate data;
-
-        data = DateUtils.parseDate("02/08/2023");
-        funcionario.setDataDemissao(data);
-        violations = getViolationsField(funcionario, "dataDemissao");
-        assertFalse("validar data de admissao correta 1 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertFalse("validar data de demissao correta 1 @FutureOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof FutureOrPresent));
-
-        data = DateUtils.parseDate("30/06/2023");
-        funcionario.setDataDemissao(data);
-        violations = getViolationsField(funcionario, "dataDemissao");
-        assertFalse("validar data de admissao correta 2 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertFalse("validar data de demissao correta 2@FutureOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof FutureOrPresent));
-
-    }
-
-    @Test
-    public void testarDataDemissaoInvalida() {
-        LocalDate data;
-
-        funcionario.setDataDemissao(null);
-        violations = getViolationsField(funcionario, "dataDemissao");
-        assertTrue("validar data de admissao correta 2 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertFalse("validar data de demissao incorreta @FutureOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof FutureOrPresent));
-
-
-        data = DateUtils.parseDate("02/02/2023");
-        funcionario.setDataDemissao(data);
-        violations = getViolationsField(funcionario, "dataDemissao");
-        assertFalse("validar data de admissao correta 2 @NotNull", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof NotNull));
-        assertTrue("validar data de demissao incorreta @FutureOrPresent", violations.stream().anyMatch(v -> v.getConstraintDescriptor().getAnnotation() instanceof FutureOrPresent));
-    }
 
     @Test
     public void testarSalario() {

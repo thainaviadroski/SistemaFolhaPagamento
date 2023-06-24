@@ -115,4 +115,65 @@ public class ControleFolhaPagFuncionarioTest {
         System.out.println(folPagFuncionarioTest);
         assertEquals(folPagFuncionario, folPagFuncionarioTest);
     }
+    @Test
+    public void testeExemplo3() {
+        folPagFuncionario.setHorasTrabalhadas(160);
+        folPagFuncionario.setSalarioBase(3000);
+        folPagFuncionario.setTotalProventos(3087.9);
+        folPagFuncionario.setValorINSS(247.03);
+
+        folPagFuncionarioTest.setHorasTrabalhadas(160);
+
+        controleFolha.calcularFolhadePagamento(folPagFuncionarioTest);
+
+        System.out.println(folPagFuncionario);
+        System.out.println(folPagFuncionarioTest);
+        assertEquals(folPagFuncionario, folPagFuncionarioTest);
+    }
+    @Test
+    public void testeExemplo4() {
+        folPagFuncionario.setHorasTrabalhadas(176);
+        folPagFuncionario.setSalarioBase(4000);
+        folPagFuncionario.setTotalProventos(3833.33);
+        folPagFuncionario.setValorINSS(306.67);
+
+        folPagFuncionarioTest.setHorasTrabalhadas(176);
+
+        controleFolha.calcularFolhadePagamento(folPagFuncionarioTest);
+
+        System.out.println(folPagFuncionario);
+        System.out.println(folPagFuncionarioTest);
+        assertEquals(folPagFuncionario, folPagFuncionarioTest);
+    }
+    @Test
+    public void testeExemplo5() {
+        folPagFuncionario.setHorasTrabalhadas(200);
+        folPagFuncionario.setSalarioBase(2500);
+        folPagFuncionario.setTotalProventos(2416.67);
+        folPagFuncionario.setValorINSS(193.33);
+
+        folPagFuncionarioTest.setHorasTrabalhadas(200);
+
+        controleFolha.calcularFolhadePagamento(folPagFuncionarioTest);
+
+        System.out.println(folPagFuncionario);
+        System.out.println(folPagFuncionarioTest);
+        assertEquals(folPagFuncionario, folPagFuncionarioTest);
+    }
+    @Test
+    public void testeExemplo6() {
+        folPagFuncionario.setHorasTrabalhadas(176);
+        folPagFuncionario.setSalarioBase(5000);
+        folPagFuncionario.setTotalProventos(4666.67);
+        folPagFuncionario.setValorINSS(373.33);
+
+        folPagFuncionarioTest.setHorasTrabalhadas(176);
+
+        controleFolha.calcularFolhadePagamento(folPagFuncionarioTest);
+
+        System.out.println(folPagFuncionario);
+        System.out.println(folPagFuncionarioTest);
+        assertEquals(folPagFuncionario, folPagFuncionarioTest);
+    }
+
 }

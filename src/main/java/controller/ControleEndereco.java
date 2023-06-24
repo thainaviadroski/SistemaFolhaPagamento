@@ -6,14 +6,10 @@ import java.util.stream.Collectors;
 import dao.DaoEndereco;
 import modelo.Endereco;
 
-import util.Input;
+import utils.Input;
 import utils.ValidacaoUtil;
 
 
-/**
- *
- * @author andre.luchesi
- */
 public class ControleEndereco {
     private DaoEndereco dao;
     private ValidacaoUtil validator = new ValidacaoUtil(Endereco.class);
