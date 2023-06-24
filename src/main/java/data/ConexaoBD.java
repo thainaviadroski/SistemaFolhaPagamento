@@ -10,7 +10,7 @@ public class ConexaoBD {
     private static EntityManager entidadeConexao;
     
     private static void criarConexao(){
-        factory = Persistence.createEntityManagerFactory("AulaValidacaoPU");
+        factory = Persistence.createEntityManagerFactory("sistemapag");
         entidadeConexao = factory.createEntityManager();        
     }
     

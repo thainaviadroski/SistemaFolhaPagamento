@@ -1,14 +1,21 @@
 package modelo;
 
 import annotations.CPF;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 
 import javax.xml.transform.Source;
 import java.util.Objects;
 
 
+@Entity
 public class Pessoa extends Entidade implements Source {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @NotBlank(message = "Invalid Field")

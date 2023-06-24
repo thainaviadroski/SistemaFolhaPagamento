@@ -1,5 +1,6 @@
 package modelo;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -7,6 +8,7 @@ import jakarta.validation.constraints.*;
 
 import javax.xml.transform.Source;
 
+@Entity
 public class Cargo extends Entidade implements Source {
 
     @Id

@@ -1,12 +1,20 @@
 package modelo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.Range;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@Entity
 public class FolhaPagFunc extends Entidade implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @NotNull(message = "O id da folha de pagamentos não pode ser nulo.")
     @NotBlank(message = "O id da folha de pagamento nao pode estar vazia.")
     @NotEmpty(message = "O Id da folha de pagamento nao pode estar vazio")

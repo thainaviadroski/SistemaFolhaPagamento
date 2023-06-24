@@ -1,5 +1,6 @@
 package modelo;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
+@Entity
 public class ConfiguracaoFolhaPag extends Entidade implements Serializable {
 
     @Id

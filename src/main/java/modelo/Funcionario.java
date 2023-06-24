@@ -1,12 +1,21 @@
 package modelo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 public class Funcionario extends Pessoa implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @NotBlank(message = "O cargo não pode estar em branco.")
     private Cargo cargo;
 
@@ -39,6 +48,15 @@ public class Funcionario extends Pessoa implements Serializable {
         this.salario = salario;
         this.recebeValeTransporte = recebeValeTransporte;
         this.numeroDependentes = numeroDependentes;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Cargo getCargo() {
