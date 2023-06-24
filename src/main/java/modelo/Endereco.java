@@ -2,10 +2,10 @@ package modelo;
 
 import jakarta.validation.constraints.*;
 
-public class Endereco {
-    @NotBlank( message = "O Id do endereco nao pode estar em branco")
-    @NotNull( message = "O Id do endereco nao pode estar nulo")
-    @NotEmpty( message = "O Id do endereco nao pode estar vazio")
+public class Endereco extends Entidade {
+    @NotBlank(message = "O Id do endereco nao pode estar em branco")
+    @NotNull(message = "O Id do endereco nao pode estar nulo")
+    @NotEmpty(message = "O Id do endereco nao pode estar vazio")
     private Integer id;
 
     @Size(max = 50, message = "O nome da cidade deve ter no máximo {max} caracteres")
@@ -39,6 +39,7 @@ public class Endereco {
         this.telefone = telefone;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }

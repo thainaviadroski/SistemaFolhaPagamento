@@ -1,4 +1,4 @@
-package util;
+package utils;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

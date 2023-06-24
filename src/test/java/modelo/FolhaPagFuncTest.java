@@ -1,3 +1,5 @@
+package modelo;
+
 import annotations.DESCONTOINSS;
 import jakarta.validation.Validation;
 import modelo.FolhaPagFunc;

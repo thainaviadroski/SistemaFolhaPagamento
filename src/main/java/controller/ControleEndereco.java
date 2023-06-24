@@ -1,12 +1,14 @@
-package controle;
+package controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import dao.DaoEndereco;
 import modelo.Endereco;
-import persistencia.DaoEndereco;
+
 import util.Input;
-import util.validacoes.ValidacaoUtil;
+import utils.ValidacaoUtil;
+
 
 /**
  *
@@ -77,7 +79,7 @@ public class ControleEndereco {
     }
     
     public List<Endereco> carregarTodos() {
-        return dao.findAll().stream().map(e -> (Endereco) e).collect(Collectors.toList());
+        return (List<Endereco>) dao.findAll().stream().map(e -> (Endereco) e).collect(Collectors.toList());
     }
 
     public void remover() {

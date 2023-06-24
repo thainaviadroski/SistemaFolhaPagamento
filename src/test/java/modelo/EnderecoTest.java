@@ -1,3 +1,5 @@
+package modelo;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.validation.ConstraintViolation;

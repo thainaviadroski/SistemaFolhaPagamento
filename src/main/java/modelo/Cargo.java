@@ -1,13 +1,17 @@
 package modelo;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 
 import javax.xml.transform.Source;
 
-public class Cargo implements Source {
+public class Cargo extends Entidade implements Source {
 
-    //@NotNull( message = "O Id do cargo nao pode estar nulo")
-    private Integer idCargo;
+    @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private Integer id;
     //@Min(value = 1, message = "A carga horária mensal não pode ser negativa")
 
     @Min(value = 1, message = "Value invalid")
@@ -21,18 +25,18 @@ public class Cargo implements Source {
     public Cargo() {
     }
 
-    public Cargo(Integer idCargo, int cargaHorariaMensal, String descricao) {
-        this.idCargo = idCargo;
+    public Cargo(Integer id, int cargaHorariaMensal, String descricao) {
+        this.id = id;
         this.cargaHorariaMensal = cargaHorariaMensal;
         this.descricao = descricao;
     }
 
-    public Integer getIdCargo() {
-        return idCargo;
+    public Integer getId() {
+        return id;
     }
 
     public void setIdCargo(Integer idCargo) {
-        this.idCargo = idCargo;
+        this.id = idCargo;
     }
 
     public int getCargaHorariaMensal() {
@@ -54,7 +58,7 @@ public class Cargo implements Source {
     @Override
     public String toString() {
         return "Cargo{" +
-                "idCargo=" + idCargo +
+                "idCargo=" + id +
                 ", cargaHorariaMensal=" + cargaHorariaMensal +
                 ", descricao='" + descricao + '\'' +
                 '}';

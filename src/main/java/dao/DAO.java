@@ -1,37 +1,38 @@
-package persistencia;
+package dao;
 
-import javax.persistence.EntityManager;
-import java.util.List;
+import data.ConexaoBD;
+import modelo.Cargo;
 import modelo.Entidade;
 
-/**
- *
- * @author andre.luchesi
- */
-public abstract class DAO {
-    
+import jakarta.persistence.EntityManager;
+import java.util.List;
+
+public abstract class DAO<T extends Entidade> {
+
     private final EntityManager entityManager;
-    protected Class classModel;
-    
-    public DAO(Class classModel) {
+    protected Class<T> classModel;
+
+    public DAO(Class<T> classModel) {
         this.classModel = classModel;
         entityManager = ConexaoBD.getConection();
     }
-    public EntityManager getEntityManager() {
+
+    protected EntityManager getEntityManager() {
         return entityManager;
     }
-    public Entidade findById(int id){
-        return (Entidade) entityManager.find(classModel, id);
+
+    public T findById(int id) {
+        return entityManager.find(classModel, id);
     }
-    
-    public List<Entidade> findAll(){
+
+    public List<T> findAll() {
         return entityManager.createQuery(entityManager.getCriteriaBuilder().createQuery(classModel)).getResultList();
     }
-    
+
     public boolean saveOrUpdate(Entidade entidade) {
         try {
             if (entidade == null) {
-                throw new Exception("A entidade não pode está nula!");
+                throw new IllegalArgumentException("A entidade não pode estar nula!");
             }
             entityManager.getTransaction().begin();
             if (entidade.getId() == null) {
@@ -47,11 +48,11 @@ public abstract class DAO {
             return false;
         }
     }
-    
-     public boolean delete(Entidade entidade) {
-         try {
+
+    public boolean delete(T entidade) {
+        try {
             if (entidade == null) {
-                throw new Exception("A entidade não pode está nula!");
+                throw new IllegalArgumentException("A entidade não pode estar nula!");
             }
             entityManager.getTransaction().begin();
             entityManager.remove(entidade);
@@ -63,7 +64,8 @@ public abstract class DAO {
             return false;
         }
     }
-    public void deleteById( int id) {
+
+    public void deleteById(int id) {
         delete(findById(id));
     }
 }

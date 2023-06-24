@@ -1,18 +1,14 @@
-package controle;
+package controller;
+
+import dao.DaoFuncionario;
+import modelo.Funcionario;
+import modelo.Pessoa;
+import utils.Input;
+import utils.ValidacaoUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import modelo.Funcionario;
-import modelo.Pessoa;
-import persistencia.DaoFuncionario;
-import util.Input;
-import util.excecoes.ExceptionCadastro;
-import util.validacoes.ValidacaoUtil;
 
-/**
- *
- * @author Andre
- */
 public class ControleFuncionario extends ControlePessoa {
 
     private DaoFuncionario dao;
@@ -59,14 +55,14 @@ public class ControleFuncionario extends ControlePessoa {
         System.out.println("informe o CTPS: ");
         p.setCtps(Input.next());
         System.out.println("informe o Cargo: ");
-        p.setCargo(controleCargo.pesquisar());
+        p.setCargo(controleCargo.pesquisarCargo());
         System.out.println("informe a data de Adimissão: ");
         p.setDataAdmissao(Input.nextLocalDate());
-    
+
     }
-    
+
     @Override
-    public Funcionario pesquisar(){
+    public Funcionario pesquisar() {
         System.out.println("informe o código do funcionário: ");
         int codigo = Input.nextInt();
         return carregarPorId(codigo);
@@ -79,7 +75,9 @@ public class ControleFuncionario extends ControlePessoa {
 
     @Override
     public List<Pessoa> carregarTodos() {
-        return dao.findAll().stream().map(e -> (Funcionario) e).collect(Collectors.toList());
+        return (List<Pessoa>) dao.findAll().stream().map(e -> {
+            return (Funcionario) e;
+        }).collect(Collectors.toList());
     }
 
     public void remover(Funcionario p) {

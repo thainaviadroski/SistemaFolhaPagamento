@@ -3,13 +3,14 @@ package modelo;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.Range;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class FolhaPagFunc {
+public class FolhaPagFunc extends Entidade implements Serializable {
     @NotNull(message = "O id da folha de pagamentos não pode ser nulo.")
     @NotBlank(message = "O id da folha de pagamento nao pode estar vazia.")
     @NotEmpty(message = "O Id da folha de pagamento nao pode estar vazio")
-    private Integer idFolhaPagFunc;
+    private Integer id;
     @Range(min = 1900, max = 2023, message = "O ano deve conter 4 numeros")
     @Min(value = 1900, message = "O ano de referência deve ser igual ou superior a 1900.")
     private int anoReferencia;
@@ -62,11 +63,23 @@ public class FolhaPagFunc {
     @Min(value = 0, message = "O salário líquido não pode ser negativo.")
     private double salarioLiquido;
 
+    private ConfiguracaoFolhaPag configuracaoFolhaPag;
+
+    private Funcionario funcionario;
+
+    private int faltasSemJustificativa;
+
+    private double valorHorasExtra;
+
+    private Cargo cargo;
+
+    private double valorINSS;
+
     public FolhaPagFunc() {
     }
 
-    public FolhaPagFunc(Integer idFolhaPagFunc, int anoReferencia, int mesReferencia, LocalDate dataPagamento, int horasTrabalhadas, int faltasSemJustificativas, double salarioBase, double valorHorasExtras, double totalProventos, double valorValeTransporte, double valorValeAlimentacao, double descontoINSS, double descontoIR, double descontoValeTransporte, double descontoValeAlimentacao, double valorFGTS, double totalDescontos, double salarioLiquido) {
-        this.idFolhaPagFunc = idFolhaPagFunc;
+    public FolhaPagFunc(@NotNull(message = "O id da folha de pagamentos não pode ser nulo.") Integer id, int anoReferencia, int mesReferencia, @NotNull(message = "A data de pagamento não pode ser nula.") LocalDate dataPagamento, int horasTrabalhadas, int faltasSemJustificativas, double salarioBase, double valorHorasExtras, double totalProventos, double valorValeTransporte, double valorValeAlimentacao, double descontoINSS, double descontoIR, double descontoValeTransporte, double descontoValeAlimentacao, double valorFGTS, double totalDescontos, double salarioLiquido, ConfiguracaoFolhaPag configuracaoFolhaPag, Funcionario funcionario, int faltasSemJustificativa, double valorHorasExtra, Cargo cargo) {
+        this.id = id;
         this.anoReferencia = anoReferencia;
         this.mesReferencia = mesReferencia;
         this.dataPagamento = dataPagamento;
@@ -84,14 +97,20 @@ public class FolhaPagFunc {
         this.valorFGTS = valorFGTS;
         this.totalDescontos = totalDescontos;
         this.salarioLiquido = salarioLiquido;
+        this.configuracaoFolhaPag = configuracaoFolhaPag;
+        this.funcionario = funcionario;
+        this.faltasSemJustificativa = faltasSemJustificativa;
+        this.valorHorasExtra = valorHorasExtra;
+        this.cargo = cargo;
     }
 
-    public Integer getIdFolhaPagFunc() {
-        return idFolhaPagFunc;
+    @Override
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdFolhaPagFunc(Integer idFolhaPagFunc) {
-        this.idFolhaPagFunc = idFolhaPagFunc;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getAnoReferencia() {
@@ -114,6 +133,9 @@ public class FolhaPagFunc {
         return dataPagamento;
     }
 
+    public void setDataPagamento(LocalDate dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
 
     public int getHorasTrabalhadas() {
         return horasTrabalhadas;
@@ -227,12 +249,51 @@ public class FolhaPagFunc {
         this.salarioLiquido = salarioLiquido;
     }
 
-    public void setDataPagamento(LocalDate dataPagamento) {
-        this.dataPagamento = dataPagamento;
+    public ConfiguracaoFolhaPag getConfiguracaoFolhaPag() {
+        return configuracaoFolhaPag;
     }
 
-    public double calcularFolhadePagamento(FolhaPagFunc folha) {
-        return folha.getSalarioBase() - (folha.getSalarioBase() - (folha.getDescontoINSS() / 100));
+    public void setConfiguracaoFolhaPag(ConfiguracaoFolhaPag configuracaoFolhaPag) {
+        this.configuracaoFolhaPag = configuracaoFolhaPag;
     }
 
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public int getFaltasSemJustificativa() {
+        return faltasSemJustificativa;
+    }
+
+    public void setFaltasSemJustificativa(int faltasSemJustificativa) {
+        this.faltasSemJustificativa = faltasSemJustificativa;
+    }
+
+    public double getValorHorasExtra() {
+        return valorHorasExtra;
+    }
+
+    public void setValorHorasExtra(double valorHorasExtra) {
+        this.valorHorasExtra = valorHorasExtra;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
+    public double getValorINSS() {
+        return valorINSS;
+    }
+
+    public void setValorINSS(double valorINSS) {
+        this.valorINSS = valorINSS;
+    }
 }

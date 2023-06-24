@@ -1,15 +1,12 @@
-package persistencia;
+package dao;
 
-import modelo.FolhaPagFuncionario;
+import modelo.FolhaPagFunc;
 
-/**
- *
- * @author Andre
- */
 public class DaoFolhaPagFuncionario extends DAO{
-    
+
+
     public DaoFolhaPagFuncionario() {
-        super(FolhaPagFuncionario.class);
+        super(FolhaPagFunc.class);
     }
     
 }

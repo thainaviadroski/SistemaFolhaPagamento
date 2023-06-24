@@ -4,12 +4,11 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Locale;
 import java.util.Objects;
 
 public class Funcionario extends Pessoa implements Serializable {
     @NotBlank(message = "O cargo não pode estar em branco.")
-    private String cargo;
+    private Cargo cargo;
 
     private String ctps;
     private LocalDate dataAdmissao;
@@ -21,16 +20,32 @@ public class Funcionario extends Pessoa implements Serializable {
     public Funcionario() {
     }
 
-    public Funcionario(Integer id, String nome, String cpf, String email, String telefone, Endereco endereco, String cargo) {
-        super(id, nome, cpf, email, telefone, endereco);
+    public Funcionario(Cargo cargo, String ctps, LocalDate dataAdmissao, LocalDate dataDemissao, double salario, boolean recebeValeTransporte, int numeroDependentes) {
         this.cargo = cargo;
+        this.ctps = ctps;
+        this.dataAdmissao = dataAdmissao;
+        this.dataDemissao = dataDemissao;
+        this.salario = salario;
+        this.recebeValeTransporte = recebeValeTransporte;
+        this.numeroDependentes = numeroDependentes;
     }
 
-    public String getCargo() {
+    public Funcionario(Integer id, String nome, String cpf, String email, String telefone, Endereco endereco, Cargo cargo, String ctps, LocalDate dataAdmissao, LocalDate dataDemissao, double salario, boolean recebeValeTransporte, int numeroDependentes) {
+        super(id, nome, cpf, email, telefone, endereco);
+        this.cargo = cargo;
+        this.ctps = ctps;
+        this.dataAdmissao = dataAdmissao;
+        this.dataDemissao = dataDemissao;
+        this.salario = salario;
+        this.recebeValeTransporte = recebeValeTransporte;
+        this.numeroDependentes = numeroDependentes;
+    }
+
+    public Cargo getCargo() {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
 

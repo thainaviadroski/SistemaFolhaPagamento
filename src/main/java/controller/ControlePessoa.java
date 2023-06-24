@@ -1,11 +1,13 @@
-package controle;
+package controller;
+
+
+import dao.DaoPessoa;
+import modelo.Pessoa;
+import utils.Input;
+import utils.ValidacaoUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import modelo.Pessoa;
-import persistencia.DaoPessoa;
-import util.Input;
-import util.validacoes.ValidacaoUtil;
 
 public class ControlePessoa {
 
@@ -67,7 +69,7 @@ public class ControlePessoa {
     }
     
     public List<Pessoa> carregarTodos() {
-        return dao.findAll().stream().map(e -> (Pessoa) e).collect(Collectors.toList());
+        return (List<Pessoa>) dao.findAll().stream().map(e -> (Pessoa) e).collect(Collectors.toList());
     }
 
     public void remover() {

@@ -1,11 +1,22 @@
 package modelo;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public class ConfiguracaoFolhaPag {
+import java.io.Serializable;
+
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
+public class ConfiguracaoFolhaPag extends Entidade implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @NotBlank(message = "O Id da configuracao da folha de pagamentos nao pode estar em branco")
     @NotNull(message = "O Id da configuracao da folha de pagamentos nao pode estar nulo")
     private Integer idConfiguracaoFolhaPag;
@@ -41,6 +52,15 @@ public class ConfiguracaoFolhaPag {
         this.valorDiaValeTransporte = valorDiaValeTransporte;
         this.percentualDescontoValeTransporte = percentualDescontoValeTransporte;
         this.percentualDescontoValeAlimentacao = percentualDescontoValeAlimentacao;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Integer getIdConfiguracaoFolhaPag() {

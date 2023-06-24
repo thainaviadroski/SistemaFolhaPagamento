@@ -1,11 +1,13 @@
-package controle;
+package controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import dao.DaoConfiguracaoFolhaPag;
 import modelo.ConfiguracaoFolhaPag;
-import persistencia.DaoConfiguracaoFolhaPag;
-import util.Input;
-import util.validacoes.ValidacaoUtil;
+
+import utils.Input;
+import utils.ValidacaoUtil;
 
 /**
  *
@@ -71,7 +73,7 @@ public class ControleConfiguracaoFolhaPag {
     }
     
     public List<ConfiguracaoFolhaPag> carregarTodos() {
-        return dao.findAll().stream().map(e -> (ConfiguracaoFolhaPag) e).collect(Collectors.toList());
+        return (List<ConfiguracaoFolhaPag>) dao.findAll().stream().map(e -> (ConfiguracaoFolhaPag) e).collect(Collectors.toList());
     }
 
     public void remover() {
@@ -81,4 +83,6 @@ public class ControleConfiguracaoFolhaPag {
         }
         dao.delete(configFolhaPag);
     }
+
+
 }
